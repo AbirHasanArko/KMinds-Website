@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KMinds | Login</title>
+</head>
+<body>
+  <header>
+    <h1>KMinds Login</h1>
+    <nav aria-label="Auth navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html" aria-current="page">Login</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="login-heading">
+      <h2 id="login-heading">Sign In</h2>
+      <form action="#" method="post">
+        <div>
+          <label for="login-email">Institutional Email</label>
+          <input id="login-email" name="email" type="email" placeholder="example@stud.kuet.ac.bd" required>
+        </div>
+
+        <div>
+          <label for="login-password">Password</label>
+          <input id="login-password" name="password" type="password" required>
+        </div>
+
+        <button type="submit">Login</button>
+      </form>
+      <p>New member? <a href="signup.html">Create an account</a></p>
+    </section>
+
+    <section aria-labelledby="payment-proof-heading">
+      <h2 id="payment-proof-heading">New Member Payment Verification (After Login)</h2>
+      <p>New members must submit a bKash transaction reference to verify boarding fee payment.</p>
+      <form action="#" method="post">
+        <div>
+          <label for="bkash-ref">bKash Transaction Reference</label>
+          <input id="bkash-ref" name="bkash_reference" type="text" minlength="6" required>
+        </div>
+        <button type="submit">Submit Reference</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>KMinds, KUET</p>
+  </footer>
+</body>
+</html>

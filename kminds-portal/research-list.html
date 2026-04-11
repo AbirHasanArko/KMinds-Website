@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KMinds | Research Items</title>
+</head>
+<body>
+  <header>
+    <h1>Research Items</h1>
+    <nav aria-label="Content navigation">
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="article-list.html">Articles</a></li>
+        <li><a href="research-list.html" aria-current="page">Research</a></li>
+        <li><a href="dataset-list.html">Datasets</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="submit-research-heading">
+      <h2 id="submit-research-heading">Submit Research Item</h2>
+      <form action="#" method="post">
+        <div>
+          <label for="research-title">Title</label>
+          <input id="research-title" name="title" type="text" required>
+        </div>
+        <div>
+          <label for="research-abstract">Abstract</label>
+          <textarea id="research-abstract" name="abstract" rows="6" required></textarea>
+        </div>
+        <div>
+          <label for="research-link">Paper/Resource Link</label>
+          <input id="research-link" name="resource_link" type="url" placeholder="https://..." required>
+        </div>
+        <button type="submit">Share Research</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="research-feed-heading">
+      <h2 id="research-feed-heading">Research Feed</h2>
+      <article>
+        <h3>Placeholder: ML for Medical Image Analysis</h3>
+        <p>Shared by KMinds Research Wing</p>
+      </article>
+      <article>
+        <h3>Placeholder: Time Series Forecasting with Transformers</h3>
+        <p>Shared by Department Team</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>KMinds, KUET</p>
+  </footer>
+</body>
+</html>

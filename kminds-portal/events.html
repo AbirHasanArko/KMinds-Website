@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KMinds | Events</title>
+</head>
+<body>
+  <header>
+    <h1>KMinds Events</h1>
+    <nav aria-label="Event navigation">
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="events.html" aria-current="page">Events</a></li>
+        <li><a href="members.html">Members</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="event-list-heading">
+      <h2 id="event-list-heading">Upcoming Events</h2>
+      <article>
+        <h3>Placeholder: KMinds Datathon 2026</h3>
+        <p>Date: 2026-05-15 | Time: 10:00 AM</p>
+        <p>Venue: KUET CSE Seminar Room</p>
+      </article>
+      <article>
+        <h3>Placeholder: Dataset Curation Workshop</h3>
+        <p>Date: 2026-05-28 | Time: 3:00 PM</p>
+        <p>Venue: Online</p>
+      </article>
+    </section>
+
+    <section id="admin-event-create" data-role="president vice-president general-secretary treasurer" aria-labelledby="event-create-heading">
+      <h2 id="event-create-heading">Create Event (Admin)</h2>
+      <p>Admins can create events and notify all members by email (implemented in backend phase).</p>
+      <form action="#" method="post">
+        <div>
+          <label for="event-title">Event Title</label>
+          <input id="event-title" name="title" type="text" required>
+        </div>
+        <div>
+          <label for="event-description">Description</label>
+          <textarea id="event-description" name="description" rows="4" required></textarea>
+        </div>
+        <div>
+          <label for="event-date">Date</label>
+          <input id="event-date" name="event_date" type="date" required>
+        </div>
+        <div>
+          <label for="event-time">Time</label>
+          <input id="event-time" name="event_time" type="time" required>
+        </div>
+        <div>
+          <label for="event-location">Location</label>
+          <input id="event-location" name="location" type="text" required>
+        </div>
+        <button type="submit">Create Event and Notify Members</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>KMinds, KUET</p>
+  </footer>
+</body>
+</html>

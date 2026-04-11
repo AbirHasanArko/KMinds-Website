@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KMinds | Dashboard</title>
+</head>
+<body>
+  <header>
+    <h1>KMinds Dashboard</h1>
+    <nav aria-label="Dashboard navigation">
+      <ul>
+        <li><a href="dashboard.html" aria-current="page">Dashboard</a></li>
+        <li><a href="article-list.html">Articles</a></li>
+        <li><a href="research-list.html">Research</a></li>
+        <li><a href="dataset-list.html">Datasets</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="login.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Role-Based Access Overview</h2>
+      <p>Visible role blocks are static in HTML. JS and backend will enforce actual role permissions later.</p>
+      <ul>
+        <li>President: post, audit all, create events, verify/revoke unpaid members.</li>
+        <li>Vice-President: post, audit all, create events, verify/revoke unpaid members.</li>
+        <li>General Secretary: post, audit all, create events, verify/revoke unpaid members.</li>
+        <li>Treasurer: post, manage money tasks, create events, verify/revoke unpaid members.</li>
+        <li>Member: post articles/research/datasets.</li>
+      </ul>
+    </section>
+
+    <section id="member-actions" data-role="member">
+      <h2>Member Actions</h2>
+      <ul>
+        <li><a href="article-list.html">Post and read articles</a></li>
+        <li><a href="research-list.html">Share research items</a></li>
+        <li><a href="dataset-list.html">Upload and browse datasets</a></li>
+      </ul>
+    </section>
+
+    <section id="admin-actions" data-role="president vice-president general-secretary treasurer">
+      <h2>Admin Actions</h2>
+      <ul>
+        <li><a href="events.html">Create events with date and time details</a></li>
+        <li><a href="members.html">Review payment references</a></li>
+        <li><a href="members.html">Revoke unpaid members</a></li>
+        <li><a href="members.html">Audit member activity</a></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="notify-heading">
+      <h2 id="notify-heading">Email Notification Placeholder</h2>
+      <p>When admins create a new event, all members will receive an email notification (backend phase).</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>KMinds, KUET</p>
+  </footer>
+</body>
+</html>

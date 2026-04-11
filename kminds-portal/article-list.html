@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KMinds | Articles</title>
+</head>
+<body>
+  <header>
+    <h1>Articles</h1>
+    <nav aria-label="Content navigation">
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="article-list.html" aria-current="page">Articles</a></li>
+        <li><a href="research-list.html">Research</a></li>
+        <li><a href="dataset-list.html">Datasets</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="new-article-heading">
+      <h2 id="new-article-heading">Create Article</h2>
+      <form action="#" method="post">
+        <div>
+          <label for="article-title">Title</label>
+          <input id="article-title" name="title" type="text" required>
+        </div>
+        <div>
+          <label for="article-summary">Summary</label>
+          <textarea id="article-summary" name="summary" rows="4" required></textarea>
+        </div>
+        <div>
+          <label for="article-content">Content</label>
+          <textarea id="article-content" name="content" rows="8" required></textarea>
+        </div>
+        <button type="submit">Publish Article</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="article-feed-heading">
+      <h2 id="article-feed-heading">Article Feed</h2>
+      <article>
+        <h3>Placeholder: Intro to Data Preprocessing</h3>
+        <p>By Member Name</p>
+        <p>Sample article preview text for layout structure.</p>
+      </article>
+      <article>
+        <h3>Placeholder: Winning Strategies for Datathons</h3>
+        <p>By Team KMinds</p>
+        <p>Sample article preview text for layout structure.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>KMinds, KUET</p>
+  </footer>
+</body>
+</html>

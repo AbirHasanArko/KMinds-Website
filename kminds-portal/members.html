@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KMinds | Members and Payment Audit</title>
+</head>
+<body>
+  <header>
+    <h1>Members and Payment Audit</h1>
+    <nav aria-label="Admin navigation">
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="members.html" aria-current="page">Members</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="admin-audit" data-role="president vice-president general-secretary treasurer" aria-labelledby="audit-heading">
+      <h2 id="audit-heading">Audit and Verification (Admin)</h2>
+      <p>Admins can review member payment references and revoke unpaid members.</p>
+
+      <table>
+        <caption>Payment Verification Queue</caption>
+        <thead>
+          <tr>
+            <th scope="col">Member Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">bKash Reference</th>
+            <th scope="col">Payment Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Placeholder Member A</td>
+            <td>membera@stud.kuet.ac.bd</td>
+            <td>Member</td>
+            <td>TXN12345</td>
+            <td>Pending</td>
+            <td>
+              <button type="button">Approve</button>
+              <button type="button">Reject</button>
+              <button type="button">Revoke</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Placeholder Member B</td>
+            <td>memberb@stud.kuet.ac.bd</td>
+            <td>Member</td>
+            <td>TXN98765</td>
+            <td>Rejected</td>
+            <td>
+              <button type="button">Approve</button>
+              <button type="button">Reject</button>
+              <button type="button">Revoke</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section aria-labelledby="revocation-policy-heading">
+      <h2 id="revocation-policy-heading">Revocation Policy Placeholder</h2>
+      <p>If a member remains unpaid, account status becomes suspended and all posts by that member are hidden from feeds.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>KMinds, KUET</p>
+  </footer>
+</body>
+</html>

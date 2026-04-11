@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KMinds | Profile</title>
+</head>
+<body>
+  <header>
+    <h1>Member Profile</h1>
+    <nav aria-label="Profile navigation">
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="profile.html" aria-current="page">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="account-heading">
+      <h2 id="account-heading">Account Details</h2>
+      <dl>
+        <dt>Name</dt>
+        <dd>Placeholder User</dd>
+        <dt>Email</dt>
+        <dd>placeholder@stud.kuet.ac.bd</dd>
+        <dt>Department</dt>
+        <dd>CSE</dd>
+        <dt>Year-Term</dt>
+        <dd>2-1</dd>
+        <dt>Role</dt>
+        <dd>Member</dd>
+      </dl>
+    </section>
+
+    <section aria-labelledby="payment-status-heading">
+      <h2 id="payment-status-heading">Payment Status</h2>
+      <p>Status: Pending Verification</p>
+      <form action="#" method="post">
+        <div>
+          <label for="profile-bkash-ref">Update bKash Transaction Reference</label>
+          <input id="profile-bkash-ref" name="bkash_reference" type="text" minlength="6" required>
+        </div>
+        <button type="submit">Submit/Update Reference</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="posting-privileges-heading">
+      <h2 id="posting-privileges-heading">Posting Privileges</h2>
+      <p>All roles can post articles, research items, and datasets.</p>
+      <p>If account status is suspended for unpaid fee, content visibility is revoked until re-approval.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>KMinds, KUET</p>
+  </footer>
+</body>
+</html>

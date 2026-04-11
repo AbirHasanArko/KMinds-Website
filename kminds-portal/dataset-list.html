@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KMinds | Datasets</title>
+</head>
+<body>
+  <header>
+    <h1>Dataset Hub</h1>
+    <nav aria-label="Content navigation">
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="article-list.html">Articles</a></li>
+        <li><a href="research-list.html">Research</a></li>
+        <li><a href="dataset-list.html" aria-current="page">Datasets</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="upload-dataset-heading">
+      <h2 id="upload-dataset-heading">Share Dataset</h2>
+      <form action="#" method="post" enctype="multipart/form-data">
+        <div>
+          <label for="dataset-title">Dataset Title</label>
+          <input id="dataset-title" name="title" type="text" required>
+        </div>
+        <div>
+          <label for="dataset-description">Description</label>
+          <textarea id="dataset-description" name="description" rows="5" required></textarea>
+        </div>
+        <div>
+          <label for="dataset-file">Dataset File</label>
+          <input id="dataset-file" name="dataset_file" type="file" required>
+        </div>
+        <button type="submit">Upload Dataset</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="dataset-feed-heading">
+      <h2 id="dataset-feed-heading">Shared Datasets</h2>
+      <article>
+        <h3>Placeholder: Bangla Sentiment Dataset</h3>
+        <p>Format: CSV | Size: 25 MB</p>
+      </article>
+      <article>
+        <h3>Placeholder: KUET Campus Energy Usage</h3>
+        <p>Format: XLSX | Size: 8 MB</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>KMinds, KUET</p>
+  </footer>
+</body>
+</html>
