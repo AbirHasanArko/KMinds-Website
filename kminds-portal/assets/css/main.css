@@ -290,6 +290,58 @@ footer {
   background: rgba(255, 255, 255, 0.8);
 }
 
+.kminds-role-controls {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.45rem;
+  max-width: 320px;
+  padding: 0.7rem;
+  border-radius: var(--radius-md);
+  background: #f4faf7;
+  border: 1px solid #d1e4d9;
+}
+
+#kminds-role-badge {
+  margin: 0;
+  color: #1d423b;
+  font-weight: 600;
+}
+
+.is-role-hidden {
+  display: none;
+}
+
+.kminds-toast-host {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  display: grid;
+  gap: 0.45rem;
+  z-index: 999;
+}
+
+.kminds-toast {
+  border-radius: 10px;
+  border: 1px solid #cce1d4;
+  background: #ffffff;
+  color: #1a3934;
+  box-shadow: 0 8px 22px rgba(15, 48, 41, 0.2);
+  padding: 0.55rem 0.75rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.kminds-toast-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.kminds-toast-error {
+  border-color: #dd8c8c;
+  color: #6f1a1a;
+}
+
 @keyframes fadeSlide {
   from {
     opacity: 0;
