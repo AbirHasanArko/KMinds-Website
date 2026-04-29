@@ -3,37 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KMinds Research — share and discuss research papers in ML, AI, and data science.">
   <title>KMinds | Research Items</title>
-  <link rel='stylesheet' href='assets/css/main.css'>
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-  <header>
-    <h1>Research Items</h1>
-    <nav aria-label="Content navigation">
-      <ul>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="article-list.html">Articles</a></li>
-        <li><a href="research-list.html" aria-current="page">Research</a></li>
-        <li><a href="dataset-list.html">Datasets</a></li>
-      </ul>
-    </nav>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">K</div>
+        <span class="logo-text">KMinds</span>
+      </a>
+      <nav aria-label="Content navigation">
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="article-list.html">Articles</a></li>
+          <li><a href="research-list.html" aria-current="page">Research</a></li>
+          <li><a href="dataset-list.html">Datasets</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section aria-labelledby="submit-research-heading">
       <h2 id="submit-research-heading">Submit Research Item</h2>
-      <form action="#" method="post">
-        <div>
+      <form action="#" method="post" id="research-form">
+        <div class="form-group">
           <label for="research-title">Title</label>
-          <input id="research-title" name="title" type="text" required>
+          <input id="research-title" name="title" type="text" placeholder="Research paper title" required>
         </div>
-        <div>
+        <div class="form-group">
           <label for="research-abstract">Abstract</label>
-          <textarea id="research-abstract" name="abstract" rows="6" required></textarea>
+          <textarea id="research-abstract" name="abstract" rows="5" placeholder="Paper abstract or summary..." required></textarea>
         </div>
-        <div>
+        <div class="form-group">
+          <label for="research-cover">Cover / Diagram (optional)</label>
+          <div class="image-upload-area">
+            <input id="research-cover" name="cover_image" type="file" accept="image/*">
+            <div class="upload-icon">📊</div>
+            <p>Upload an architecture diagram or result figure</p>
+            <img class="image-preview" id="research-cover-preview" alt="Research cover preview">
+          </div>
+        </div>
+        <div class="form-group">
           <label for="research-link">Paper/Resource Link</label>
-          <input id="research-link" name="resource_link" type="url" placeholder="https://..." required>
+          <input id="research-link" name="resource_link" type="url" placeholder="https://arxiv.org/..." required>
         </div>
         <button type="submit">Share Research</button>
       </form>
@@ -41,22 +57,33 @@
 
     <section aria-labelledby="research-feed-heading">
       <h2 id="research-feed-heading">Research Feed</h2>
-      <article>
-        <h3>Placeholder: ML for Medical Image Analysis</h3>
-        <p>Shared by KMinds Research Wing</p>
-      </article>
-      <article>
-        <h3>Placeholder: Time Series Forecasting with Transformers</h3>
-        <p>Shared by Department Team</p>
-      </article>
+      <div class="card-grid" id="research-feed">
+        <div class="card">
+          <img class="card-image" src="assets/images/research-preview.png" alt="Medical Image Analysis">
+          <div class="card-body">
+            <div class="card-meta"><span>🔬</span><span>KMinds Research Wing</span><span>·</span><span>2026</span></div>
+            <h3>ML for Medical Image Analysis</h3>
+            <p>Survey of deep learning methods for automated classification and segmentation in medical imaging.</p>
+            <a href="#" class="btn btn-secondary btn-sm" style="margin-top:0.5rem">Read Paper →</a>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-image" src="assets/images/event-workshop.png" alt="Time Series with Transformers">
+          <div class="card-body">
+            <div class="card-meta"><span>🔬</span><span>Department Team</span><span>·</span><span>2026</span></div>
+            <h3>Time Series Forecasting with Transformers</h3>
+            <p>Applying attention-based architectures to multivariate time series prediction tasks.</p>
+            <a href="#" class="btn btn-secondary btn-sm" style="margin-top:0.5rem">Read Paper →</a>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>KMinds, KUET</p>
+  <footer class="site-footer">
+    <p>© 2026 KMinds — KUET Data Science, AI & ML Club</p>
   </footer>
+
   <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
-
-

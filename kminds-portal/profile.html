@@ -3,62 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KMinds Member Profile — view account details and payment status.">
   <title>KMinds | Profile</title>
-  <link rel='stylesheet' href='assets/css/main.css'>
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-  <header>
-    <h1>Member Profile</h1>
-    <nav aria-label="Profile navigation">
-      <ul>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="members.html">Members</a></li>
-        <li><a href="profile.html" aria-current="page">Profile</a></li>
-      </ul>
-    </nav>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">K</div>
+        <span class="logo-text">KMinds</span>
+      </a>
+      <nav aria-label="Profile navigation">
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="members.html">Members</a></li>
+          <li><a href="profile.html" aria-current="page">Profile</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section aria-labelledby="account-heading">
-      <h2 id="account-heading">Account Details</h2>
-      <dl>
-        <dt>Name</dt>
-        <dd>Placeholder User</dd>
+      <div class="profile-header">
+        <div class="avatar" id="profile-avatar">
+          <span id="avatar-initials">PU</span>
+        </div>
+        <div class="profile-info">
+          <h2 id="account-heading" style="background:linear-gradient(135deg,#fff,var(--brand));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:1.5rem">Placeholder User</h2>
+          <p style="display:flex;align-items:center;gap:0.5rem">
+            <span class="status status-pending" id="profile-status-badge">Pending</span>
+            <span>Member</span>
+          </p>
+        </div>
+      </div>
+      <dl id="profile-details">
         <dt>Email</dt>
-        <dd>placeholder@stud.kuet.ac.bd</dd>
+        <dd id="profile-email">placeholder@stud.kuet.ac.bd</dd>
         <dt>Department</dt>
-        <dd>CSE</dd>
+        <dd id="profile-dept">CSE</dd>
         <dt>Year-Term</dt>
-        <dd>2-1</dd>
+        <dd id="profile-year-term">2-1</dd>
+        <dt>Roll</dt>
+        <dd id="profile-roll">2105001</dd>
         <dt>Role</dt>
-        <dd>Member</dd>
+        <dd id="profile-role">Member</dd>
       </dl>
     </section>
 
     <section aria-labelledby="payment-status-heading">
       <h2 id="payment-status-heading">Payment Status</h2>
-      <p>Status: Pending Verification</p>
-      <form action="#" method="post">
-        <div>
-          <label for="profile-bkash-ref">Update bKash Transaction Reference</label>
-          <input id="profile-bkash-ref" name="bkash_reference" type="text" minlength="6" required>
+      <p style="margin-bottom:1rem">Status: <span class="status status-pending" id="payment-status-text">Pending Verification</span></p>
+      <form action="#" method="post" id="profile-bkash-form">
+        <div class="form-group">
+          <label for="profile-bkash-ref">bKash Transaction Reference</label>
+          <input id="profile-bkash-ref" name="bkash_reference" type="text" minlength="6" placeholder="e.g. TXN12345AB" required>
         </div>
-        <button type="submit">Submit/Update Reference</button>
+        <button type="submit">Submit / Update Reference</button>
       </form>
     </section>
 
     <section aria-labelledby="posting-privileges-heading">
       <h2 id="posting-privileges-heading">Posting Privileges</h2>
-      <p>All roles can post articles, research items, and datasets.</p>
-      <p>If account status is suspended for unpaid fee, content visibility is revoked until re-approval.</p>
+      <div class="feature-grid" style="grid-template-columns:1fr">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="feature-text">
+            <h3>Active Members</h3>
+            <p>All verified members can post articles, research items, and datasets. If payment is pending or revoked, content visibility is suspended.</p>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>KMinds, KUET</p>
+  <footer class="site-footer">
+    <p>© 2026 KMinds — KUET Data Science, AI & ML Club</p>
   </footer>
+
   <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
-
-

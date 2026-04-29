@@ -3,70 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KMinds Events — upcoming workshops, datathons, and community gatherings.">
   <title>KMinds | Events</title>
-  <link rel='stylesheet' href='assets/css/main.css'>
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-  <header>
-    <h1>KMinds Events</h1>
-    <nav aria-label="Event navigation">
-      <ul>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="events.html" aria-current="page">Events</a></li>
-        <li><a href="members.html">Members</a></li>
-      </ul>
-    </nav>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">K</div>
+        <span class="logo-text">KMinds</span>
+      </a>
+      <nav aria-label="Event navigation">
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="events.html" aria-current="page">Events</a></li>
+          <li><a href="members.html">Members</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
+    <!-- Upcoming Events -->
     <section aria-labelledby="event-list-heading">
       <h2 id="event-list-heading">Upcoming Events</h2>
-      <article>
-        <h3>Placeholder: KMinds Datathon 2026</h3>
-        <p>Date: 2026-05-15 | Time: 10:00 AM</p>
-        <p>Venue: KUET CSE Seminar Room</p>
-      </article>
-      <article>
-        <h3>Placeholder: Dataset Curation Workshop</h3>
-        <p>Date: 2026-05-28 | Time: 3:00 PM</p>
-        <p>Venue: Online</p>
-      </article>
+      <div class="card-grid" id="event-feed">
+        <div class="card">
+          <img class="card-image" src="assets/images/event-datathon.png" alt="KMinds Datathon 2026">
+          <div class="card-body">
+            <div class="card-meta">
+              <span>📅</span><span>May 15, 2026</span><span>·</span><span>10:00 AM</span>
+            </div>
+            <h3>KMinds Datathon 2026</h3>
+            <p>Annual inter-university data science competition.</p>
+            <span class="badge" style="margin-top:0.5rem">📍 KUET CSE Seminar Room</span>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-image" src="assets/images/event-workshop.png" alt="Dataset Curation Workshop">
+          <div class="card-body">
+            <div class="card-meta">
+              <span>📅</span><span>May 28, 2026</span><span>·</span><span>3:00 PM</span>
+            </div>
+            <h3>Dataset Curation Workshop</h3>
+            <p>Hands-on workshop on building clean, well-documented datasets.</p>
+            <span class="badge badge--accent" style="margin-top:0.5rem">📍 Online</span>
+          </div>
+        </div>
+      </div>
     </section>
 
+    <!-- Create Event (Admin) -->
     <section id="admin-event-create" data-role="president vice-president general-secretary treasurer" aria-labelledby="event-create-heading">
-      <h2 id="event-create-heading">Create Event (Admin)</h2>
-      <p>Admins can create events and notify all members by email (implemented in backend phase).</p>
-      <form action="#" method="post">
-        <div>
+      <h2 id="event-create-heading">Create Event</h2>
+      <p style="margin-bottom:1rem">Create events and notify all members by email.</p>
+      <form action="#" method="post" id="event-form">
+        <div class="form-group">
           <label for="event-title">Event Title</label>
-          <input id="event-title" name="title" type="text" required>
+          <input id="event-title" name="title" type="text" placeholder="Event name" required>
         </div>
-        <div>
+        <div class="form-group">
           <label for="event-description">Description</label>
-          <textarea id="event-description" name="description" rows="4" required></textarea>
+          <textarea id="event-description" name="description" rows="4" placeholder="Describe the event..." required></textarea>
         </div>
-        <div>
-          <label for="event-date">Date</label>
-          <input id="event-date" name="event_date" type="date" required>
+        <div class="form-group">
+          <label for="event-banner">Event Banner (optional)</label>
+          <div class="image-upload-area">
+            <input id="event-banner" name="event_banner" type="file" accept="image/*">
+            <div class="upload-icon">🎨</div>
+            <p>Upload an event banner or poster</p>
+            <img class="image-preview" id="event-banner-preview" alt="Event banner preview">
+          </div>
         </div>
-        <div>
-          <label for="event-time">Time</label>
-          <input id="event-time" name="event_time" type="time" required>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="event-date">Date</label>
+            <input id="event-date" name="event_date" type="date" required>
+          </div>
+          <div class="form-group">
+            <label for="event-time">Time</label>
+            <input id="event-time" name="event_time" type="time" required>
+          </div>
         </div>
-        <div>
+        <div class="form-group">
           <label for="event-location">Location</label>
-          <input id="event-location" name="location" type="text" required>
+          <input id="event-location" name="location" type="text" placeholder="e.g. KUET CSE Lab or Online" required>
         </div>
-        <button type="submit">Create Event and Notify Members</button>
+        <button type="submit">Create Event & Notify</button>
       </form>
     </section>
   </main>
 
-  <footer>
-    <p>KMinds, KUET</p>
+  <footer class="site-footer">
+    <p>© 2026 KMinds — KUET Data Science, AI & ML Club</p>
   </footer>
+
   <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
-
-
