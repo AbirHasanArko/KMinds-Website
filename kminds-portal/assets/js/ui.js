@@ -97,6 +97,47 @@ export function initRoleSwitcher() {
   });
 }
 
+export function initThemeSwitcher() {
+  const toggleBtn = document.createElement("button");
+  toggleBtn.id = "kminds-theme-toggle";
+  toggleBtn.className = "btn btn-secondary btn-sm";
+  toggleBtn.setAttribute("aria-label", "Toggle dark/light mode");
+
+  const storedTheme = localStorage.getItem(STORAGE_KEYS.theme);
+  const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+  const currentTheme = storedTheme || (prefersLight ? "light" : "dark");
+  
+  if (currentTheme === "light") {
+    document.documentElement.setAttribute("data-theme", "light");
+    toggleBtn.innerHTML = "🌙 Dark Mode";
+  } else {
+    toggleBtn.innerHTML = "☀️ Light Mode";
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    const isLight = document.documentElement.getAttribute("data-theme") === "light";
+    const newTheme = isLight ? "dark" : "light";
+    
+    if (newTheme === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+    
+    localStorage.setItem(STORAGE_KEYS.theme, newTheme);
+    toggleBtn.innerHTML = newTheme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode";
+    showToast(`${newTheme === "light" ? "Light" : "Dark"} mode enabled.`);
+  });
+
+  const nav = document.querySelector(".site-header nav ul");
+  if (nav) {
+    const li = document.createElement("li");
+    li.style.marginLeft = "0.5rem";
+    li.appendChild(toggleBtn);
+    nav.appendChild(li);
+  }
+}
+
 /**
  * Image preview: attach change listeners to all file inputs inside .image-upload-area
  */

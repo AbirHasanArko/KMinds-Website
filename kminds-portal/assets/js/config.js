@@ -31,7 +31,8 @@ export const VALID_YEAR_TERMS = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2", "4-1"
 export const STORAGE_KEYS = {
   role: "kminds_demo_role",
   user: "kminds_demo_user",
-  paymentQueue: "kminds_payment_queue"
+  paymentQueue: "kminds_payment_queue",
+  theme: "kminds_theme"
 };
 
 export const KUET_STUDENT_EMAIL_REGEX = /^[^@\s]+@stud\.kuet\.ac\.bd$/i;

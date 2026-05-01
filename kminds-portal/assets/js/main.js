@@ -1,5 +1,5 @@
 import { bindBkashReferenceValidation, bindContentFormValidation, bindLoginValidation, bindMemberTableFilters, bindSignupValidation } from "./validation.js";
-import { applyRoleVisibility, getStoredRole, initRoleSwitcher, showToast, initImagePreviews, populateProfileFromStorage, populateDashboardWelcome } from "./ui.js";
+import { applyRoleVisibility, getStoredRole, initRoleSwitcher, initThemeSwitcher, showToast, initImagePreviews, populateProfileFromStorage, populateDashboardWelcome } from "./ui.js";
 
 function initDemoActionButtons() {
   const actionButtons = document.querySelectorAll("button[data-action]");
@@ -59,6 +59,7 @@ function initAnimatedCounters() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  initThemeSwitcher();
   initRoleExperience();
   bindSignupValidation();
   bindLoginValidation();

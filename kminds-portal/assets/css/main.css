@@ -27,8 +27,49 @@
   --radius-lg: 16px;
   --radius-md: 12px;
   --radius-sm: 8px;
+  --bg-input: rgba(10, 15, 30, 0.6);
+  --border-input: rgba(255, 255, 255, 0.08);
+  --hero-title-start: #fff;
   --max-w: 1140px;
   --transition: 250ms cubic-bezier(.4,0,.2,1);
+}
+
+[data-theme="light"] {
+  --bg-base: #f4f7fb;
+  --bg-surface: rgba(255, 255, 255, 0.85);
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --bg-glass: rgba(255, 255, 255, 0.5);
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --brand: #00b38f;
+  --brand-dim: rgba(0, 179, 143, 0.15);
+  --brand-glow: rgba(0, 179, 143, 0.2);
+  --accent: #d97706;
+  --accent-dim: rgba(217, 119, 6, 0.15);
+  --danger: #ef4444;
+  --danger-dim: rgba(239, 68, 68, 0.12);
+  --success: #10b981;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 179, 143, 0.3);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.06);
+  --shadow-lg: 0 16px 48px rgba(0,0,0,0.1);
+  --shadow-glow: 0 0 30px rgba(0, 179, 143, 0.08);
+  --bg-input: rgba(255, 255, 255, 0.8);
+  --border-input: rgba(0, 0, 0, 0.15);
+  --hero-title-start: #1e293b;
+}
+
+[data-theme="light"] body {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(0,179,143,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 10%, rgba(217,119,6,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 80% at 50% 100%, rgba(0,100,200,0.03) 0%, transparent 60%);
+}
+
+[data-theme="light"] .hero-bg {
+  opacity: 0.15;
 }
 
 /* ── Reset ── */
@@ -200,7 +241,7 @@ main {
 .hero h1 {
   font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: 0.75rem;
-  background: linear-gradient(135deg, #fff, var(--brand));
+  background: linear-gradient(135deg, var(--hero-title-start), var(--brand));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -252,7 +293,7 @@ section:hover {
 }
 
 .card {
-  background: rgba(15, 22, 42, 0.6);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -365,8 +406,8 @@ label {
 input, select, textarea {
   width: 100%;
   padding: 0.65rem 0.85rem;
-  background: rgba(10, 15, 30, 0.6);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--bg-input);
+  border: 1px solid var(--border-input);
   border-radius: var(--radius-sm);
   color: var(--text-primary);
   font-family: inherit;
@@ -395,7 +436,7 @@ select {
   padding-right: 2rem;
 }
 
-select option { background: #141c32; color: var(--text-primary); }
+select option { background: var(--bg-card); color: var(--text-primary); }
 
 /* ── Buttons ── */
 .btn, button[type="submit"] {
@@ -487,7 +528,7 @@ caption {
   font-weight: 700;
   font-size: 0.95rem;
   color: var(--text-primary);
-  background: rgba(0,0,0,0.2);
+  background: var(--bg-glass);
   border-bottom: 1px solid var(--border);
 }
 
@@ -590,7 +631,7 @@ dd { color: var(--text-primary); font-size: 0.95rem; }
   align-items: center;
   gap: 0.75rem;
   padding: 0.6rem 1rem;
-  background: rgba(0,0,0,0.25);
+  background: var(--bg-glass);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   margin-top: 0.75rem;
@@ -619,7 +660,7 @@ dd { color: var(--text-primary); font-size: 0.95rem; }
 .kminds-toast {
   padding: 0.65rem 1rem;
   border-radius: var(--radius-md);
-  background: rgba(20, 28, 50, 0.95);
+  background: var(--bg-surface);
   backdrop-filter: blur(12px);
   border: 1px solid var(--border-hover);
   color: var(--brand);
@@ -640,7 +681,7 @@ dd { color: var(--text-primary); font-size: 0.95rem; }
 
 /* ── Image Upload Preview ── */
 .image-upload-area {
-  border: 2px dashed rgba(255,255,255,0.1);
+  border: 2px dashed var(--border-input);
   border-radius: var(--radius-md);
   padding: 2rem;
   text-align: center;
