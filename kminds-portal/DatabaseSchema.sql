@@ -1,0 +1,50 @@
+-- KMinds Portal Database Schema
+
+CREATE TABLE Users (
+    UserId INT IDENTITY(1,1) PRIMARY KEY,
+    FullName NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(150) NOT NULL UNIQUE,
+    PasswordHash NVARCHAR(255) NOT NULL,
+    Role NVARCHAR(50) DEFAULT 'Member', -- Roles: Member, CoreMember, Admin
+    JoinDate DATETIME DEFAULT GETDATE(),
+    ProfileImageUrl NVARCHAR(255) NULL
+);
+
+CREATE TABLE Articles (
+    ArticleId INT IDENTITY(1,1) PRIMARY KEY,
+    Title NVARCHAR(200) NOT NULL,
+    Content NVARCHAR(MAX) NOT NULL,
+    AuthorId INT NOT NULL FOREIGN KEY REFERENCES Users(UserId),
+    PublishDate DATETIME DEFAULT GETDATE(),
+    ThumbnailUrl NVARCHAR(255) NULL
+);
+
+CREATE TABLE Events (
+    EventId INT IDENTITY(1,1) PRIMARY KEY,
+    Title NVARCHAR(200) NOT NULL,
+    Description NVARCHAR(MAX) NOT NULL,
+    EventDate DATETIME NOT NULL,
+    Location NVARCHAR(200) NOT NULL,
+    ImageUrl NVARCHAR(255) NULL
+);
+
+CREATE TABLE Research (
+    ResearchId INT IDENTITY(1,1) PRIMARY KEY,
+    Title NVARCHAR(200) NOT NULL,
+    Abstract NVARCHAR(MAX) NOT NULL,
+    AuthorId INT NOT NULL FOREIGN KEY REFERENCES Users(UserId),
+    PublishDate DATETIME DEFAULT GETDATE(),
+    DownloadLink NVARCHAR(255) NULL,
+    Domain NVARCHAR(100) NULL
+);
+
+CREATE TABLE Datasets (
+    DatasetId INT IDENTITY(1,1) PRIMARY KEY,
+    Title NVARCHAR(200) NOT NULL,
+    Description NVARCHAR(MAX) NOT NULL,
+    UploaderId INT NOT NULL FOREIGN KEY REFERENCES Users(UserId),
+    UploadDate DATETIME DEFAULT GETDATE(),
+    DownloadLink NVARCHAR(255) NULL,
+    Size NVARCHAR(50) NULL,
+    Domain NVARCHAR(100) NULL
+);

@@ -1,0 +1,54 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="KMinds.Portal.Web.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KMinds — KUET's premier Data Science, AI, and Machine Learning club.">
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server">KMinds | KUET Data Science Club</asp:ContentPlaceHolder></title>
+    <link rel="stylesheet" href="assets/css/main.css?v=3">
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header class="site-header">
+            <div class="header-inner">
+                <a href="Default.aspx" class="logo">
+                    <div class="logo-icon">K</div>
+                    <span class="logo-text">KMinds</span>
+                </a>
+                <nav aria-label="Main navigation">
+                    <ul>
+                        <li><a href="Default.aspx">Home</a></li>
+                        <asp:LoginView runat="server">
+                            <AnonymousTemplate>
+                                <li><a href="Login.aspx">Login</a></li>
+                                <li><a href="Register.aspx">Sign Up</a></li>
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+                                <li><a href="Dashboard.aspx">Dashboard</a></li>
+                                <li>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
+                                </li>
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+
+        <footer class="site-footer">
+            <p>© 2026 KMinds — KUET Data Science, AI & ML Club</p>
+        </footer>
+
+        <script type="module" src="assets/js/main.js"></script>
+    </form>
+</body>
+</html>
