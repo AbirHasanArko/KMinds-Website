@@ -22,19 +22,19 @@
     <!-- Stats -->
     <div class="stats-row">
       <div class="stat-card">
-        <div class="stat-number" id="stat-members">120+</div>
+        <div class="stat-number" id="stat-members"><asp:Literal ID="MemberCountLiteral" runat="server">0</asp:Literal></div>
         <div class="stat-label">Active Members</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">35+</div>
+        <div class="stat-number"><asp:Literal ID="ResearchCountLiteral" runat="server">0</asp:Literal></div>
         <div class="stat-label">Research Papers</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">50+</div>
+        <div class="stat-number"><asp:Literal ID="DatasetCountLiteral" runat="server">0</asp:Literal></div>
         <div class="stat-label">Datasets Shared</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">20+</div>
+        <div class="stat-number"><asp:Literal ID="EventCountLiteral" runat="server">0</asp:Literal></div>
         <div class="stat-label">Events Hosted</div>
       </div>
     </div>
@@ -86,40 +86,14 @@
     <section>
       <h2>Recent Highlights</h2>
       <div class="card-grid">
-        <div class="card">
-          <img class="card-image" src="assets/images/event-datathon.png" alt="KMinds Datathon 2026">
-          <div class="card-body">
-            <div class="card-meta">
-              <span>🏆</span><span>Event</span><span>·</span><span>May 15, 2026</span>
-            </div>
-            <h3>KMinds Datathon 2026</h3>
-            <p>Annual inter-university data science competition with real-world problem sets.</p>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-image" src="assets/images/article-preview.png" alt="Intro to Data Preprocessing">
-          <div class="card-body">
-            <div class="card-meta">
-              <span>📝</span><span>Article</span><span>·</span><span>By Member</span>
-            </div>
-            <h3>Intro to Data Preprocessing</h3>
-            <p>A beginner-friendly guide to cleaning, transforming, and preparing datasets.</p>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-image" src="assets/images/research-preview.png" alt="ML for Medical Imaging">
-          <div class="card-body">
-            <div class="card-meta">
-              <span>🔬</span><span>Research</span><span>·</span><span>Research Wing</span>
-            </div>
-            <h3>ML for Medical Image Analysis</h3>
-            <p>Exploring deep learning approaches for automated medical image classification.</p>
-          </div>
-        </div>
+        <asp:Literal ID="RecentEventLiteral" runat="server"></asp:Literal>
+        <asp:Literal ID="RecentArticleLiteral" runat="server"></asp:Literal>
+        <asp:Literal ID="RecentResearchLiteral" runat="server"></asp:Literal>
       </div>
     </section>
 
     <!-- CTA -->
+    <% if (!HttpContext.Current.User.Identity.IsAuthenticated) { %>
     <section style="text-align:center;padding:2.5rem 1.5rem">
       <h2>Ready to Begin?</h2>
       <p style="max-width:500px;margin:0 auto 1.25rem">Create an account with your KUET student email and complete payment verification to join.</p>
@@ -128,4 +102,5 @@
         <a href="Login.aspx" class="btn btn-secondary">Sign In</a>
       </div>
     </section>
+    <% } %>
 </asp:Content>
