@@ -23,7 +23,7 @@ namespace KMinds.Portal.Web
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                string query = "SELECT FullName, Email, Role FROM Users WHERE Email = @Email";
+                string query = "SELECT FullName, Email, Role, Department, RollNumber, YearTerm FROM Users WHERE Email = @Email";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Email", email);
@@ -43,15 +43,15 @@ namespace KMinds.Portal.Web
                                 RoleDetailLiteral.Text = role;
 
                                 // Generate initials
-                                string[] names = fullName.Split(' ');
+                                string[] names = fullName.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                                 InitialsLiteral.Text = names.Length > 1 
-                                    ? names[0].Substring(0, 1) + names[names.Length - 1].Substring(0, 1) 
-                                    : fullName.Substring(0, 2).ToUpper();
+                                    ? names[0].Substring(0, 1).ToUpper() + names[names.Length - 1].Substring(0, 1).ToUpper() 
+                                    : (fullName.Length >= 2 ? fullName.Substring(0, 2).ToUpper() : fullName.ToUpper());
 
-                                // Stubbed data for demo
-                                DeptLiteral.Text = "CSE";
-                                YearTermLiteral.Text = "3-1";
-                                RollLiteral.Text = "2105001";
+                                // Bind real database data
+                                DeptLiteral.Text = reader["Department"].ToString();
+                                YearTermLiteral.Text = reader["YearTerm"].ToString();
+                                RollLiteral.Text = reader["RollNumber"].ToString();
                                 
                                 StatusBadge.Text = "Pending";
                                 PaymentStatusText.Text = "Pending Verification";

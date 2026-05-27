@@ -1,4 +1,4 @@
-<%@ Page Title="Sign Up" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="KMinds.Portal.Web.Register" %>
+<%@ Page Title="Sign Up" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="KMinds.Portal.Web.Register" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <section style="max-width:560px;margin:1.5rem auto" aria-labelledby="signup-heading">

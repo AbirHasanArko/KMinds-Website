@@ -1,4 +1,4 @@
-<%@ Page Title="Members & Payment Audit" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Members.aspx.cs" Inherits="KMinds.Portal.Web.Members" %>
+<%@ Page Title="Members & Payment Audit" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Members.aspx.cs" Inherits="KMinds.Portal.Web.Members" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <section id="admin-audit" aria-labelledby="audit-heading">

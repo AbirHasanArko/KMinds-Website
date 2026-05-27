@@ -1,5 +1,5 @@
 import { bindBkashReferenceValidation, bindContentFormValidation, bindLoginValidation, bindMemberTableFilters, bindSignupValidation } from "./validation.js";
-import { applyRoleVisibility, getStoredRole, initRoleSwitcher, initThemeSwitcher, showToast, initImagePreviews, populateProfileFromStorage, populateDashboardWelcome } from "./ui.js";
+import { initThemeSwitcher, showToast, initImagePreviews } from "./ui.js";
 
 function initDemoActionButtons() {
   const actionButtons = document.querySelectorAll("button[data-action]");
@@ -32,11 +32,6 @@ function initDemoActionButtons() {
   });
 }
 
-function initRoleExperience() {
-  initRoleSwitcher();
-  applyRoleVisibility(getStoredRole());
-}
-
 function initAnimatedCounters() {
   const counters = document.querySelectorAll(".stat-number");
   counters.forEach((el) => {
@@ -60,7 +55,6 @@ function initAnimatedCounters() {
 
 document.addEventListener("DOMContentLoaded", () => {
   initThemeSwitcher();
-  initRoleExperience();
   bindSignupValidation();
   bindLoginValidation();
   bindBkashReferenceValidation();
@@ -68,8 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
   bindMemberTableFilters();
   initDemoActionButtons();
   initImagePreviews();
-  populateProfileFromStorage();
-  populateDashboardWelcome();
   initAnimatedCounters();
 
   window.addEventListener("kminds:memberAction", (event) => {

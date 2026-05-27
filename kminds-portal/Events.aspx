@@ -1,4 +1,4 @@
-<%@ Page Title="Events" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Events.aspx.cs" Inherits="KMinds.Portal.Web.Events" %>
+<%@ Page Title="Events" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Events.aspx.cs" Inherits="KMinds.Portal.Web.Events" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <!-- Upcoming Events -->

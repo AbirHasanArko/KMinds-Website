@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="KMinds.Portal.Web.SiteMaster" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="KMinds.Portal.Web.SiteMaster" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +27,17 @@
                                 <li><a href="Login.aspx">Login</a></li>
                                 <li><a href="Register.aspx">Sign Up</a></li>
                             </AnonymousTemplate>
+                            <RoleGroups>
+                                <asp:RoleGroup Roles="president,Admin">
+                                    <ContentTemplate>
+                                        <li><a href="Dashboard.aspx">Dashboard</a></li>
+                                        <li><a href="ManageRoles.aspx">Manage Roles</a></li>
+                                        <li>
+                                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
+                                        </li>
+                                    </ContentTemplate>
+                                </asp:RoleGroup>
+                            </RoleGroups>
                             <LoggedInTemplate>
                                 <li><a href="Dashboard.aspx">Dashboard</a></li>
                                 <li>

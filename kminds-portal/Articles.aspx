@@ -1,4 +1,4 @@
-<%@ Page Title="Articles" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Articles.aspx.cs" Inherits="KMinds.Portal.Web.Articles" %>
+<%@ Page Title="Articles" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Articles.aspx.cs" Inherits="KMinds.Portal.Web.Articles" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <!-- Create Article -->

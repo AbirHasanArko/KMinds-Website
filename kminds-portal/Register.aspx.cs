@@ -27,14 +27,19 @@ namespace KMinds.Portal.Web
             
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                string query = "INSERT INTO Users (FullName, Email, PasswordHash, Role, JoinDate) VALUES (@FullName, @Email, @PasswordHash, 'Member', GETDATE())";
+                string query = "INSERT INTO Users (FullName, Email, PasswordHash, Role, JoinDate, Department, RollNumber, YearTerm) VALUES (@FullName, @Email, @PasswordHash, 'Member', GETDATE(), @Department, @RollNumber, @YearTerm)";
                 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@FullName", FullNameTextBox.Text.Trim());
                     cmd.Parameters.AddWithValue("@Email", EmailTextBox.Text.Trim());
-                    // In a real application, Hash the password using BCrypt or similar!
-                    cmd.Parameters.AddWithValue("@PasswordHash", PasswordTextBox.Text); 
+                    
+                    string hashedPassword = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(PasswordTextBox.Text, "SHA1");
+                    cmd.Parameters.AddWithValue("@PasswordHash", hashedPassword); 
+                    
+                    cmd.Parameters.AddWithValue("@Department", DepartmentDropDown.SelectedValue);
+                    cmd.Parameters.AddWithValue("@RollNumber", RollTextBox.Text.Trim());
+                    cmd.Parameters.AddWithValue("@YearTerm", YearTermDropDown.SelectedValue);
 
                     try
                     {

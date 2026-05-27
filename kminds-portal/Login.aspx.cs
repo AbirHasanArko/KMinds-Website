@@ -18,11 +18,25 @@ namespace KMinds.Portal.Web
         protected void LoginButton_Click(object sender, EventArgs e)
         {
             string email = EmailTextBox.Text.Trim();
-            string password = PasswordTextBox.Text; // In production, this should be compared against a hash!
+            string password = PasswordTextBox.Text;
 
-            if (AuthenticateUser(email, password))
+            string role = AuthenticateUser(email, password);
+            if (!string.IsNullOrEmpty(role))
             {
-                FormsAuthentication.RedirectFromLoginPage(email, false);
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
+                    1,
+                    email,
+                    DateTime.Now,
+                    DateTime.Now.AddMinutes(FormsAuthentication.Timeout.TotalMinutes),
+                    false, // isPersistent
+                    role // UserData holds the role
+                );
+
+                string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+                HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                Response.Cookies.Add(authCookie);
+
+                Response.Redirect(FormsAuthentication.GetRedirectUrl(email, false));
             }
             else
             {
@@ -31,13 +45,12 @@ namespace KMinds.Portal.Web
             }
         }
 
-        private bool AuthenticateUser(string email, string password)
+        private string AuthenticateUser(string email, string password)
         {
             string connString = ConfigurationManager.ConnectionStrings["KMindsDB"].ConnectionString;
             
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                // Query compares PasswordHash (For simplicity here it compares raw string, but ALWAYS hash passwords in production)
                 string query = "SELECT UserId, PasswordHash, Role FROM Users WHERE Email = @Email";
                 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -52,12 +65,15 @@ namespace KMinds.Portal.Web
                             if (reader.Read())
                             {
                                 string dbPasswordHash = reader["PasswordHash"].ToString();
+                                string dbRole = reader["Role"].ToString();
                                 
-                                // TODO: Replace this with proper hashing verification like BCrypt.Verify(password, dbPasswordHash)
-                                if (password == dbPasswordHash) 
+                                string hashedPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(password, "SHA1");
+
+                                // Fallback to plaintext comparison if the DB hasn't been migrated to hashes yet,
+                                // but primarily use the hash comparison.
+                                if (hashedPassword == dbPasswordHash || password == dbPasswordHash) 
                                 {
-                                    // Authentication successful
-                                    return true;
+                                    return dbRole;
                                 }
                             }
                         }
@@ -66,11 +82,10 @@ namespace KMinds.Portal.Web
                     {
                         ErrorMessage.Text = "A database error occurred. Please try again later.";
                         ErrorMessage.Visible = true;
-                        // Log exception (ex)
                     }
                 }
             }
-            return false;
+            return null;
         }
     }
 }

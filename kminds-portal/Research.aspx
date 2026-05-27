@@ -1,4 +1,4 @@
-<%@ Page Title="Research" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Research.aspx.cs" Inherits="KMinds.Portal.Web.Research" %>
+<%@ Page Title="Research" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Research.aspx.cs" Inherits="KMinds.Portal.Web.Research" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:PlaceHolder ID="SubmitResearchPlaceHolder" runat="server" Visible="false">

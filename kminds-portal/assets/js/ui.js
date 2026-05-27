@@ -1,15 +1,4 @@
-import { ROLES, STORAGE_KEYS } from "./config.js";
-
-function getRoleLabel(role) {
-  const labels = {
-    "member": "Member",
-    "treasurer": "Treasurer",
-    "general-secretary": "General Secretary",
-    "vice-president": "Vice-President",
-    "president": "President"
-  };
-  return labels[role] || role;
-}
+import { STORAGE_KEYS } from "./config.js";
 
 export function showToast(message, type = "success") {
   let host = document.getElementById("kminds-toast-host");
@@ -33,69 +22,6 @@ export function showToast(message, type = "success") {
   }, 2800);
 }
 
-export function getStoredRole() {
-  return localStorage.getItem(STORAGE_KEYS.role) || "member";
-}
-
-export function applyRoleVisibility(currentRole) {
-  const role = ROLES.includes(currentRole) ? currentRole : "member";
-  const roleBlocks = document.querySelectorAll("section[data-role], div[data-role]");
-
-  roleBlocks.forEach((block) => {
-    const allowedRoles = (block.dataset.role || "")
-      .split(/\s+/)
-      .filter(Boolean)
-      .map((item) => item.toLowerCase());
-
-    const isVisible = allowedRoles.length === 0 || allowedRoles.includes(role);
-    block.classList.toggle("is-role-hidden", !isVisible);
-    block.setAttribute("aria-hidden", String(!isVisible));
-  });
-
-  const roleBadge = document.getElementById("kminds-role-badge");
-  if (roleBadge) {
-    roleBadge.textContent = `Current role: ${getRoleLabel(role)}`;
-  }
-}
-
-export function initRoleSwitcher() {
-  if (document.getElementById("kminds-role-controls")) {
-    return;
-  }
-
-  const wrapper = document.createElement("div");
-  wrapper.id = "kminds-role-controls";
-  wrapper.className = "kminds-role-controls";
-  wrapper.innerHTML = `
-    <p id="kminds-role-badge">Current role: ${getRoleLabel(getStoredRole())}</p>
-    <label for="kminds-role-select" style="display:none">Role preview</label>
-    <select id="kminds-role-select" aria-label="Role preview selector">
-      <option value="member">Member</option>
-      <option value="treasurer">Treasurer</option>
-      <option value="general-secretary">General Secretary</option>
-      <option value="vice-president">Vice-President</option>
-      <option value="president">President</option>
-    </select>
-  `;
-
-  const header = document.querySelector(".site-header .header-inner");
-  if (header) {
-    header.appendChild(wrapper);
-  } else {
-    const fallback = document.querySelector("header");
-    if (fallback) fallback.appendChild(wrapper);
-  }
-
-  const select = document.getElementById("kminds-role-select");
-  const initialRole = getStoredRole();
-  select.value = ROLES.includes(initialRole) ? initialRole : "member";
-
-  select.addEventListener("change", () => {
-    localStorage.setItem(STORAGE_KEYS.role, select.value);
-    applyRoleVisibility(select.value);
-    showToast(`Preview role switched to ${getRoleLabel(select.value)}.`);
-  });
-}
 
 export function initThemeSwitcher() {
   const toggleBtn = document.createElement("button");
@@ -206,68 +132,4 @@ export function initImagePreviews() {
   });
 }
 
-/**
- * Populate the profile page from localStorage data
- */
-export function populateProfileFromStorage() {
-  const userRaw = localStorage.getItem(STORAGE_KEYS.user);
-  if (!userRaw) return;
 
-  try {
-    const user = JSON.parse(userRaw);
-
-    const fields = {
-      "profile-email": user.email,
-      "profile-dept": user.department,
-      "profile-year-term": user.yearTerm,
-      "profile-roll": user.roll,
-    };
-
-    for (const [id, value] of Object.entries(fields)) {
-      const el = document.getElementById(id);
-      if (el && value) el.textContent = value;
-    }
-
-    // Update name in heading
-    const heading = document.getElementById("account-heading");
-    if (heading && user.name) heading.textContent = user.name;
-
-    // Update avatar initials
-    const initialsEl = document.getElementById("avatar-initials");
-    if (initialsEl && user.name) {
-      const parts = user.name.trim().split(/\s+/);
-      const initials = parts.length >= 2
-        ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
-        : parts[0].substring(0, 2).toUpperCase();
-      initialsEl.textContent = initials;
-    }
-
-    // Update role from switcher
-    const roleEl = document.getElementById("profile-role");
-    if (roleEl) {
-      roleEl.textContent = getRoleLabel(getStoredRole());
-    }
-  } catch (e) {
-    // silently fail
-  }
-}
-
-/**
- * Populate the dashboard welcome message from localStorage
- */
-export function populateDashboardWelcome() {
-  const welcome = document.getElementById("dashboard-welcome");
-  if (!welcome) return;
-
-  const userRaw = localStorage.getItem(STORAGE_KEYS.user);
-  if (userRaw) {
-    try {
-      const user = JSON.parse(userRaw);
-      if (user.name) {
-        welcome.textContent = `Welcome back, ${user.name.split(" ")[0]}!`;
-      }
-    } catch (e) {
-      // fallback
-    }
-  }
-}

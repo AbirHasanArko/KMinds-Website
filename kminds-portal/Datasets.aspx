@@ -1,4 +1,4 @@
-<%@ Page Title="Datasets" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Datasets.aspx.cs" Inherits="KMinds.Portal.Web.Datasets" %>
+<%@ Page Title="Datasets" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Datasets.aspx.cs" Inherits="KMinds.Portal.Web.Datasets" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:PlaceHolder ID="UploadDatasetPlaceHolder" runat="server" Visible="false">
