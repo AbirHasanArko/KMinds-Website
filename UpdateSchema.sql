@@ -1,0 +1,1 @@
+ALTER TABLE Research ADD ThumbnailUrl NVARCHAR(255) NULL;
