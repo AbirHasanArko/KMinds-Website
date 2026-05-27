@@ -14,16 +14,22 @@ export const ADMIN_ROLES = new Set([
 ]);
 
 export const VALID_DEPARTMENTS = [
-  "CSE",
   "EEE",
+  "CSE",
+  "ECE",
+  "BME",
   "MSE",
-  "CE",
+  "MTE",
   "ME",
-  "URP",
-  "BTE",
-  "IPE",
+  "IEM",
+  "TE",
   "LE",
-  "ECE"
+  "ESE",
+  "ChE",
+  "CE",
+  "URP",
+  "BECM",
+  "ARCH"
 ];
 
 export const VALID_YEAR_TERMS = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2", "4-1", "4-2"];

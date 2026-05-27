@@ -234,7 +234,7 @@ main.js    ← Entry point (imports and orchestrates everything)
 |--------|---------|
 | `ROLES` | Array: `["member", "treasurer", "general-secretary", "vice-president", "president"]` |
 | `ADMIN_ROLES` | Set of 4 admin role strings |
-| `VALID_DEPARTMENTS` | Array of 10 KUET department codes |
+| `VALID_DEPARTMENTS` | Array of 16 KUET department codes |
 | `VALID_YEAR_TERMS` | Array: `["1-1", "1-2", ..., "4-2"]` |
 | `STORAGE_KEYS` | Object with localStorage key names, including `kminds_theme` |
 | `KUET_STUDENT_EMAIL_REGEX` | `/^[^@\s]+@stud\.kuet\.ac\.bd$/i` |

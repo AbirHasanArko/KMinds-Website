@@ -34,16 +34,22 @@
             <label for="DepartmentDropDown">Department</label>
             <asp:DropDownList ID="DepartmentDropDown" runat="server" required="true" CssClass="form-control">
               <asp:ListItem Value="" Text="Select Dept" disabled="true" Selected="True"></asp:ListItem>
-              <asp:ListItem Value="CSE" Text="CSE"></asp:ListItem>
               <asp:ListItem Value="EEE" Text="EEE"></asp:ListItem>
-              <asp:ListItem Value="MSE" Text="MSE"></asp:ListItem>
-              <asp:ListItem Value="CE" Text="CE"></asp:ListItem>
-              <asp:ListItem Value="ME" Text="ME"></asp:ListItem>
-              <asp:ListItem Value="URP" Text="URP"></asp:ListItem>
-              <asp:ListItem Value="BTE" Text="BTE"></asp:ListItem>
-              <asp:ListItem Value="IPE" Text="IPE"></asp:ListItem>
-              <asp:ListItem Value="LE" Text="LE"></asp:ListItem>
+              <asp:ListItem Value="CSE" Text="CSE"></asp:ListItem>
               <asp:ListItem Value="ECE" Text="ECE"></asp:ListItem>
+              <asp:ListItem Value="BME" Text="BME"></asp:ListItem>
+              <asp:ListItem Value="MSE" Text="MSE"></asp:ListItem>
+              <asp:ListItem Value="MTE" Text="MTE"></asp:ListItem>
+              <asp:ListItem Value="ME" Text="ME"></asp:ListItem>
+              <asp:ListItem Value="IEM" Text="IEM"></asp:ListItem>
+              <asp:ListItem Value="TE" Text="TE"></asp:ListItem>
+              <asp:ListItem Value="LE" Text="LE"></asp:ListItem>
+              <asp:ListItem Value="ESE" Text="ESE"></asp:ListItem>
+              <asp:ListItem Value="ChE" Text="ChE"></asp:ListItem>
+              <asp:ListItem Value="CE" Text="CE"></asp:ListItem>
+              <asp:ListItem Value="URP" Text="URP"></asp:ListItem>
+              <asp:ListItem Value="BECM" Text="BECM"></asp:ListItem>
+              <asp:ListItem Value="ARCH" Text="ARCH"></asp:ListItem>
             </asp:DropDownList>
           </div>
           <div class="form-group">

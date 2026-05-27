@@ -22,9 +22,22 @@
           <label for="FilterDeptDropDown">Department</label>
           <asp:DropDownList ID="FilterDeptDropDown" runat="server" AutoPostBack="true" OnSelectedIndexChanged="Filter_Changed" CssClass="form-control">
             <asp:ListItem Value="">All Depts</asp:ListItem>
-            <asp:ListItem Value="CSE">CSE</asp:ListItem>
             <asp:ListItem Value="EEE">EEE</asp:ListItem>
+            <asp:ListItem Value="CSE">CSE</asp:ListItem>
+            <asp:ListItem Value="ECE">ECE</asp:ListItem>
+            <asp:ListItem Value="BME">BME</asp:ListItem>
             <asp:ListItem Value="MSE">MSE</asp:ListItem>
+            <asp:ListItem Value="MTE">MTE</asp:ListItem>
+            <asp:ListItem Value="ME">ME</asp:ListItem>
+            <asp:ListItem Value="IEM">IEM</asp:ListItem>
+            <asp:ListItem Value="TE">TE</asp:ListItem>
+            <asp:ListItem Value="LE">LE</asp:ListItem>
+            <asp:ListItem Value="ESE">ESE</asp:ListItem>
+            <asp:ListItem Value="ChE">ChE</asp:ListItem>
+            <asp:ListItem Value="CE">CE</asp:ListItem>
+            <asp:ListItem Value="URP">URP</asp:ListItem>
+            <asp:ListItem Value="BECM">BECM</asp:ListItem>
+            <asp:ListItem Value="ARCH">ARCH</asp:ListItem>
           </asp:DropDownList>
         </div>
         <div class="form-group">
