@@ -9,7 +9,8 @@
         {
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
-                if (HttpContext.Current.User.Identity is FormsIdentity id)
+                FormsIdentity id = HttpContext.Current.User.Identity as FormsIdentity;
+                if (id != null)
                 {
                     FormsAuthenticationTicket ticket = id.Ticket;
                     string userData = ticket.UserData;
