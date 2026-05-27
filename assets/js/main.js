@@ -70,3 +70,30 @@ document.addEventListener("DOMContentLoaded", () => {
     showToast(`${member} marked as ${action}.`);
   });
 });
+
+window.openDetailsModal = function(title, content, metaHtml) {
+  const modal = document.getElementById("universalModal");
+  if (!modal) return;
+  document.getElementById("modalTitle").innerHTML = title;
+  document.getElementById("modalMeta").innerHTML = metaHtml || "";
+  document.getElementById("modalBody").innerHTML = content;
+  modal.classList.add("visible");
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeDetailsModal = function() {
+  const modal = document.getElementById("universalModal");
+  if (modal) {
+    modal.classList.remove("visible");
+    document.body.style.overflow = '';
+  }
+};
+
+document.addEventListener("click", function(e) {
+  const modal = document.getElementById("universalModal");
+  if (modal && modal.classList.contains("visible")) {
+    if (e.target === modal) {
+      window.closeDetailsModal();
+    }
+  }
+});

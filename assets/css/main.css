@@ -715,6 +715,83 @@ dd { color: var(--text-primary); font-size: 0.95rem; }
 
 .image-preview.visible { display: block; }
 
+/* ── Universal Modal ── */
+.universal-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 2rem;
+  overflow-y: auto;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.universal-modal.visible {
+  display: flex;
+  animation: fadeIn 300ms ease both;
+}
+
+.modal-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  margin: auto;
+  animation: fadeUp 400ms ease both;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-size: 1.7rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color var(--transition);
+}
+
+.modal-close:hover {
+  color: var(--danger);
+}
+
+.modal-header {
+  padding: 2.5rem 2.5rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--brand), #60e8cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.modal-meta {
+  display: flex;
+  gap: 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.modal-body {
+  padding: 2.5rem;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  white-space: pre-wrap;
+  line-height: 1.7;
+}
+
 /* ── Animations ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
@@ -724,6 +801,11 @@ dd { color: var(--text-primary); font-size: 0.95rem; }
 @keyframes fadeDown {
   from { opacity: 0; transform: translateY(-12px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes pulse {

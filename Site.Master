@@ -22,6 +22,10 @@
                 <nav aria-label="Main navigation">
                     <ul>
                         <li><a href="Default.aspx">Home</a></li>
+                        <li><a href="Articles.aspx">Articles</a></li>
+                        <li><a href="Research.aspx">Research</a></li>
+                        <li><a href="Datasets.aspx">Datasets</a></li>
+                        <li><a href="Events.aspx">Events</a></li>
                         <asp:LoginView runat="server">
                             <AnonymousTemplate>
                                 <li><a href="Login.aspx">Login</a></li>
@@ -31,6 +35,7 @@
                                 <asp:RoleGroup Roles="president,Admin">
                                     <ContentTemplate>
                                         <li><a href="Dashboard.aspx">Dashboard</a></li>
+                                        <li><a href="Profile.aspx">Profile</a></li>
                                         <li><a href="ManageRoles.aspx">Manage Roles</a></li>
                                         <li>
                                             <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
@@ -40,6 +45,7 @@
                             </RoleGroups>
                             <LoggedInTemplate>
                                 <li><a href="Dashboard.aspx">Dashboard</a></li>
+                                <li><a href="Profile.aspx">Profile</a></li>
                                 <li>
                                     <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
                                 </li>
@@ -59,7 +65,19 @@
             <p>© 2026 KMinds — KUET Data Science, AI & ML Club</p>
         </footer>
 
-        <script type="module" src="assets/js/main.js"></script>
+        <!-- Universal Details Modal -->
+        <div id="universalModal" class="universal-modal">
+            <div class="modal-container">
+                <button type="button" class="modal-close" onclick="closeDetailsModal()">&times;</button>
+                <div class="modal-header">
+                    <h2 id="modalTitle" class="modal-title"></h2>
+                    <div id="modalMeta" class="modal-meta"></div>
+                </div>
+                <div id="modalBody" class="modal-body"></div>
+            </div>
+        </div>
+
+        <script type="module" src="assets/js/main.js?v=4"></script>
     </form>
 </body>
 </html>
