@@ -17,9 +17,10 @@
             <div class="form-group">
               <label for="ResearchCoverUpload">Cover / Diagram (optional)</label>
               <div class="image-upload-area">
-                <asp:FileUpload ID="ResearchCoverUpload" runat="server" accept="image/*" />
-                <div class="upload-icon">📊</div>
-                <p>Upload an architecture diagram or result figure</p>
+                <asp:FileUpload ID="ThumbnailUpload" runat="server" accept="image/*" />
+                <div class="upload-icon">📷</div>
+                <p>Click or drag thumbnail</p>
+                <img class="image-preview" src="" alt="Thumbnail preview" />
               </div>
             </div>
             <div class="form-group">
@@ -34,15 +35,26 @@
     <section aria-labelledby="research-feed-heading">
       <h2 id="research-feed-heading">Research Feed</h2>
       <div class="card-grid" id="research-feed">
-        <asp:Repeater ID="ResearchRepeater" runat="server">
+        <asp:Repeater ID="ResearchRepeater" runat="server" OnItemDataBound="ResearchRepeater_ItemDataBound" OnItemCommand="ResearchRepeater_ItemCommand">
             <ItemTemplate>
                 <div class="card">
                   <img class="card-image" src='<%# Eval("ThumbnailUrl") %>' alt='<%# Eval("Title") %>'>
                   <div class="card-body">
-                    <div class="card-meta"><span>🔬</span><span><%# Eval("AuthorName") %></span><span>·</span><span><%# Eval("PublishDate", "{0:yyyy}") %></span></div>
+                    <div class="card-meta">
+                        <span>🔬 By <%# Eval("AuthorName") %></span>
+                        <span>· <%# Eval("PublishDate", "{0:MMM dd, yyyy}") %></span>
+                        <div style="margin-left:auto;display:flex;gap:0.25rem;">
+                            <asp:HyperLink ID="EditLink" runat="server" NavigateUrl='<%# "Research.aspx?edit_id=" + Eval("ResearchId") %>' Text="Edit" CssClass="btn btn-secondary" style="padding:0.2rem 0.5rem;font-size:0.75rem;" Visible="false"></asp:HyperLink>
+                            <asp:LinkButton ID="DeleteBtn" runat="server" CommandName="Delete" CommandArgument='<%# Eval("ResearchId") %>' Text="Delete" CssClass="btn btn-secondary" style="padding:0.2rem 0.5rem;font-size:0.75rem;background-color:#ffebee;color:#c62828;border-color:#ffcdd2" Visible="false" OnClientClick="return confirm('Are you sure you want to delete this research item?');"></asp:LinkButton>
+                        </div>
+                    </div>
                     <h3><%# Eval("Title") %></h3>
-                    <p><%# Eval("Abstract") %></p>
-                    <asp:HyperLink runat="server" NavigateUrl='<%# Eval("DownloadLink") %>' CssClass="btn btn-secondary btn-sm" style="margin-top:0.5rem">Read Paper →</asp:HyperLink>
+                    <p><%# Eval("Summary") %></p>
+                    <div style="display:flex;gap:0.5rem;margin-top:0.5rem">
+                      <button type="button" class="btn btn-secondary btn-sm" onclick="openDetailsModal('<%# HttpUtility.JavaScriptStringEncode(Eval("Title").ToString()) %>', this.parentNode.nextElementSibling.innerHTML, '<%# HttpUtility.JavaScriptStringEncode("🔬 By " + Eval("AuthorName") + " &middot; " + Eval("PublishDate", "{0:MMM dd, yyyy}")) %>')">View Details</button>
+                      <asp:HyperLink runat="server" NavigateUrl='<%# Eval("DownloadLink") %>' CssClass="btn btn-primary btn-sm">Read Paper &rarr;</asp:HyperLink>
+                    </div>
+                    <div style="display:none;"><%# Eval("FullContent") %></div>
                   </div>
                 </div>
             </ItemTemplate>
