@@ -5,17 +5,25 @@
     <section aria-labelledby="event-list-heading">
       <h2 id="event-list-heading">Upcoming Events</h2>
       <div class="card-grid" id="event-feed">
-        <asp:Repeater ID="EventsRepeater" runat="server">
+        <asp:Repeater ID="EventsRepeater" runat="server" OnItemDataBound="EventsRepeater_ItemDataBound" OnItemCommand="EventsRepeater_ItemCommand">
             <ItemTemplate>
                 <div class="card">
                   <img class="card-image" src='<%# Eval("ImageUrl") %>' alt='<%# Eval("Title") %>'>
                   <div class="card-body">
                     <div class="card-meta">
                       <span>📅</span><span><%# Eval("EventDate", "{0:MMM dd, yyyy}") %></span><span>·</span><span><%# Eval("EventDate", "{0:hh:mm tt}") %></span>
+                      <div style="margin-left:auto;display:flex;gap:0.25rem;">
+                          <asp:HyperLink ID="EditLink" runat="server" NavigateUrl='<%# "Events.aspx?edit_id=" + Eval("EventId") %>' Text="Edit" CssClass="btn btn-secondary" style="padding:0.2rem 0.5rem;font-size:0.75rem;" Visible="false"></asp:HyperLink>
+                          <asp:LinkButton ID="DeleteBtn" runat="server" CommandName="Delete" CommandArgument='<%# Eval("EventId") %>' Text="Delete" CssClass="btn btn-secondary" style="padding:0.2rem 0.5rem;font-size:0.75rem;background-color:#ffebee;color:#c62828;border-color:#ffcdd2" Visible="false" OnClientClick="return confirm('Are you sure you want to delete this event?');"></asp:LinkButton>
+                      </div>
                     </div>
                     <h3><%# Eval("Title") %></h3>
-                    <p><%# Eval("Description") %></p>
-                    <span class="badge" style="margin-top:0.5rem">📍 <%# Eval("Location") %></span>
+                    <p><%# Eval("Summary") %></p>
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:0.75rem">
+                      <span class="badge">📍 <%# Eval("Location") %></span>
+                      <button type="button" class="btn btn-primary btn-sm" onclick="openDetailsModal('<%# HttpUtility.JavaScriptStringEncode(Eval("Title").ToString()) %>', this.parentNode.nextElementSibling.innerHTML, '<%# HttpUtility.JavaScriptStringEncode("📅 " + Eval("EventDate", "{0:MMM dd, yyyy} at {0:hh:mm tt}") + " &middot; 📍 " + Eval("Location")) %>')">Event Details &rarr;</button>
+                    </div>
+                    <div style="display:none;"><%# Eval("FullContent") %></div>
                   </div>
                 </div>
             </ItemTemplate>
@@ -41,9 +49,10 @@
             <div class="form-group">
               <label for="EventBannerUpload">Event Banner (optional)</label>
               <div class="image-upload-area">
-                <asp:FileUpload ID="EventBannerUpload" runat="server" accept="image/*" />
-                <div class="upload-icon">🎨</div>
-                <p>Upload an event banner or poster</p>
+                <asp:FileUpload ID="EventImageUpload" runat="server" accept="image/*" />
+                <div class="upload-icon">📷</div>
+                <p>Click or drag event poster</p>
+                <img class="image-preview" src="" alt="Event preview" />
               </div>
             </div>
             <div class="form-row">
