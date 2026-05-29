@@ -74,6 +74,7 @@
             <asp:FileUpload ID="ProfileImageUpload" runat="server" accept="image/*" />
             <div class="upload-icon">📷</div>
             <p>Click or drag to upload profile photo</p>
+            <img class="image-preview" src="" alt="Profile preview" />
           </div>
         </div>
 

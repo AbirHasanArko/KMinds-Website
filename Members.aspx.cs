@@ -23,11 +23,10 @@ namespace KMinds.Portal.Web
 
         private void LoadMembers()
         {
-            // Placeholder logic. You'd normally build a dynamic query based on the selected dropdown values.
             string connString = ConfigurationManager.ConnectionStrings["KMindsDB"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                string query = "SELECT UserId, FullName, Email, Role, 'CSE' AS Department, 'TXN12345' AS PaymentRef, 'Pending' AS PaymentStatus FROM Users";
+                string query = "SELECT UserId, FullName, Email, Role, ISNULL(Department, 'N/A') AS Department, ISNULL(PaymentRef, 'None') AS PaymentRef, ISNULL(PaymentStatus, 'Pending') AS PaymentStatus FROM Users";
                 using (SqlDataAdapter da = new SqlDataAdapter(query, conn))
                 {
                     DataTable dt = new DataTable();
@@ -41,13 +40,30 @@ namespace KMinds.Portal.Web
         protected void MembersRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             int userId = Convert.ToInt32(e.CommandArgument);
+            string status = "";
             if (e.CommandName == "Approve")
             {
-                // Update DB to approve member
+                status = "Approved";
             }
             else if (e.CommandName == "Reject")
             {
-                // Update DB to reject member
+                status = "Rejected";
+            }
+            
+            if (!string.IsNullOrEmpty(status))
+            {
+                string connString = ConfigurationManager.ConnectionStrings["KMindsDB"].ConnectionString;
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    string query = "UPDATE Users SET PaymentStatus = @Status WHERE UserId = @UserId";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Status", status);
+                        cmd.Parameters.AddWithValue("@UserId", userId);
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
             }
             LoadMembers(); // Refresh grid
         }
