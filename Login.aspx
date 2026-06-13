@@ -21,23 +21,14 @@
           <label for="PasswordTextBox">Password</label>
           <asp:TextBox ID="PasswordTextBox" runat="server" TextMode="Password" required="true"></asp:TextBox>
         </div>
+        <div style="margin-top: 0.5rem; margin-bottom: 1rem;">
+          <asp:CheckBox ID="RememberMeCheckBox" runat="server" Text="Remember me" style="display:flex; align-items:center; gap:0.4rem; cursor:pointer; font-weight:normal; white-space:nowrap; font-size:0.9rem;" />
+        </div>
         <asp:Button ID="LoginButton" runat="server" Text="Sign In" OnClick="LoginButton_Click" CssClass="btn btn-primary" Width="100%" />
       </div>
 
       <p style="text-align:center;margin-top:1.25rem">
         New member? <a href="Register.aspx">Create an account</a>
       </p>
-    </section>
-
-    <section style="max-width:480px;margin:0 auto" aria-labelledby="payment-proof-heading">
-      <h2 id="payment-proof-heading">Payment Verification</h2>
-      <p style="margin-bottom:1rem">New members must submit a bKash transaction reference to verify boarding fee payment after signing up.</p>
-      <div class="form-container" style="display:flex;flex-direction:column;gap:1.25rem;">
-        <div class="form-group">
-          <label for="BkashRefTextBox">bKash Transaction Reference</label>
-          <asp:TextBox ID="BkashRefTextBox" runat="server" placeholder="e.g. TXN12345AB" required="true"></asp:TextBox>
-        </div>
-        <asp:Button ID="VerifyPaymentButton" runat="server" Text="Submit Reference" CssClass="btn btn-secondary" Width="100%" />
-      </div>
     </section>
 </asp:Content>

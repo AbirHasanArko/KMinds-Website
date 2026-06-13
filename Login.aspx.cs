@@ -24,20 +24,25 @@ namespace KMinds.Portal.Web
             string role = AuthenticateUser(email, password);
             if (!string.IsNullOrEmpty(role))
             {
+                bool isPersistent = RememberMeCheckBox.Checked;
                 FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
                     1,
                     email,
                     DateTime.Now,
                     DateTime.Now.AddMinutes(FormsAuthentication.Timeout.TotalMinutes),
-                    false, // isPersistent
+                    isPersistent, // isPersistent
                     role // UserData holds the role
                 );
 
                 string encryptedTicket = FormsAuthentication.Encrypt(ticket);
                 HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                if (isPersistent)
+                {
+                    authCookie.Expires = ticket.Expiration;
+                }
                 Response.Cookies.Add(authCookie);
 
-                Response.Redirect(FormsAuthentication.GetRedirectUrl(email, false));
+                Response.Redirect(FormsAuthentication.GetRedirectUrl(email, isPersistent));
             }
             else
             {

@@ -415,6 +415,13 @@ input, select, textarea {
   transition: all var(--transition);
 }
 
+input[type="checkbox"], input[type="radio"] {
+  width: auto;
+  padding: 0;
+  cursor: pointer;
+  accent-color: var(--brand);
+}
+
 input::placeholder, textarea::placeholder {
   color: var(--text-muted);
 }
